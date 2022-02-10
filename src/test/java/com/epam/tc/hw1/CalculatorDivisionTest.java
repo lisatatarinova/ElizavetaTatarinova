@@ -11,22 +11,24 @@ public class CalculatorDivisionTest {
 
     @Test(dataProviderClass = DataProviderForCalculator.class,
             dataProvider = "getTestDataForDivisionPositive")
-    public void divisionPositiveTest(double a, double b, double expected){
-        double result = calculator.div(a,b);
+    public void divisionPositiveTest(double a, double b, double expected) {
+
+        double result = calculator.div(a, b);
         assertThat(result).isEqualTo(expected);
     }
 
     @Test(dataProviderClass = DataProviderForCalculator.class,
             dataProvider = "getTestDataForDivisionByZero")
-    public void divisionByZeroLongTest(long a, long b){
-        Throwable throwable = catchThrowable(() -> calculator.div(a,b));
+    public void divisionByZeroLongTest(long a, long b) {
+
+        Throwable throwable = catchThrowable(() -> calculator.div(a, b));
         assertThat(throwable).isInstanceOf(NumberFormatException.class);
     }
 
     @Test(dataProviderClass = DataProviderForCalculator.class,
             dataProvider = "getTestDataForDivisionByZero")
-    public void divisionByZeroDoubleTest(double a, double b){
-        Throwable throwable = catchThrowable(() -> calculator.div(a,b));
-        assertThat(throwable).isInstanceOf(Exception.class);
+    public void divisionByZeroDoubleTest(double a, double b) {
+        double result = calculator.div(a, b);
+        assertThat(result).isEqualTo(Double.POSITIVE_INFINITY);
     }
 }
