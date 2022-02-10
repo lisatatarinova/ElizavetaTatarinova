@@ -28,6 +28,7 @@ public class CalculatorDivisionTest {
     @Test(dataProviderClass = DataProviderForCalculator.class,
             dataProvider = "getTestDataForDivisionByZero")
     public void divisionByZeroDoubleTest(double a, double b) {
+
         double result = calculator.div(a, b);
         assertThat(result).isEqualTo(Double.POSITIVE_INFINITY);
     }
