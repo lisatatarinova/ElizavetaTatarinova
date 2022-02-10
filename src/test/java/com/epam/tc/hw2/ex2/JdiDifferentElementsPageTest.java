@@ -21,7 +21,7 @@ public class JdiDifferentElementsPageTest {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         String driverPath = "/Users/Elizaveta_Tatarinova/Downloads/chromedriver";
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
@@ -37,14 +37,14 @@ public class JdiDifferentElementsPageTest {
     }
 
     @Test
-    public void jdi2UserNameAfterLoginTest(){
+    public void jdi2UserNameAfterLoginTest() {
         //Perform login
         WebElement loginButton = driver.findElement(By.id("user-icon"));
         loginButton.click();
 
         FluentWait<WebDriver> webDriverWait = new FluentWait(driver);
         List<WebElement> loginNameField = webDriverWait.until(
-                ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("input#name"),0)
+                ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("input#name"), 0)
         );
 
         loginNameField.get(0).sendKeys("Roman");
@@ -61,15 +61,15 @@ public class JdiDifferentElementsPageTest {
     }
 
     @Test
-    public void jdi3DifferentElementsPageTest(){
+    public void jdi3DifferentElementsPageTest() {
         //Open through the header menu Service -> Different Elements Page
         WebElement serviceInHeaderButton =
                 driver.findElement(By.xpath("//header/descendant::a[contains(.,'Service')]"));
         serviceInHeaderButton.click();
 
         FluentWait<WebDriver> webDriverWait = new FluentWait(driver);
-        List <WebElement> serviceDropDown = webDriverWait.until(
-                ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//a[text()='Different elements']"),0)
+        List<WebElement> serviceDropDown = webDriverWait.until(
+                ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//a[text()='Different elements']"), 0)
         );
 
         serviceDropDown.get(0).click();
@@ -96,8 +96,8 @@ public class JdiDifferentElementsPageTest {
                 driver.findElement(By.xpath("//option[text()='Red']"));
         redRadioButton.click();
 
-        List <WebElement> colourDropdown = webDriverWait.until(
-                ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//option[text()='Yellow']"),0)
+        List<WebElement> colourDropdown = webDriverWait.until(
+                ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//option[text()='Yellow']"), 0)
         );
 
         colourDropdown.get(0).click();

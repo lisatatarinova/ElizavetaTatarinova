@@ -17,7 +17,7 @@ public class JdiHomePageTest {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         String driverPath = "/Users/Elizaveta_Tatarinova/Downloads/chromedriver";
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
@@ -33,14 +33,14 @@ public class JdiHomePageTest {
     }
 
     @Test
-    public void jdi2UserNameAfterLoginTest(){
+    public void jdi2UserNameAfterLoginTest() {
         //Perform login
         WebElement loginButton = driver.findElement(By.id("user-icon"));
         loginButton.click();
 
         FluentWait<WebDriver> webDriverWait = new FluentWait(driver);
         List<WebElement> loginNameField = webDriverWait.until(
-                ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("input#name"),0)
+                ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("input#name"), 0)
         );
 
         loginNameField.get(0).sendKeys("Roman");
@@ -58,7 +58,7 @@ public class JdiHomePageTest {
 
 
     @Test
-    public void jdi3HeaderItemsTest(){
+    public void jdi3HeaderItemsTest() {
         //Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> headerItems = driver.findElements(By.xpath("//header/div/nav/ul[contains(@class,'m-l8')]/li"));
 
@@ -72,14 +72,14 @@ public class JdiHomePageTest {
     }
 
     @Test
-    public void jdi4ImagesInTheIndexPageTest(){
+    public void jdi4ImagesInTheIndexPageTest() {
         //Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> imgElements = driver.findElements(By.cssSelector("span[class*='icons-benefit']"));
         assertThat(imgElements.size()).isEqualTo(4);
     }
 
     @Test
-    public void jdi5TextsInTheIndexPageTest(){
+    public void jdi5TextsInTheIndexPageTest() {
         //Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> imgElements = driver.findElements(By.className("benefit-txt"));
         assertThat(imgElements.size()).isEqualTo(4);
@@ -100,19 +100,19 @@ public class JdiHomePageTest {
     }
 
     @Test
-    public void jdi6IframeWithFrameButtonExistsTest(){
+    public void jdi6IframeWithFrameButtonExistsTest() {
         //Assert that there is the iframe with “Frame Button” exist
-        List <WebElement> framewithFrameButton = driver.findElements(By.id("frame"));
+        List<WebElement> framewithFrameButton = driver.findElements(By.id("frame"));
 
         assertThat(framewithFrameButton.size()).isGreaterThan(0);
     }
 
     @Test
-    public void jdi7frameButtonInIframeTest(){
+    public void jdi7frameButtonInIframeTest() {
         //Switch to the iframe and check that there is “Frame Button” in the iframe
         driver.switchTo().frame("frame");
 
-        List <WebElement> frameButton = driver.findElements(By.cssSelector("input[value='Frame Button']"));
+        List<WebElement> frameButton = driver.findElements(By.cssSelector("input[value='Frame Button']"));
 
         assertThat(frameButton.size()).isGreaterThan(0);
         //Switch to original window back
@@ -120,9 +120,9 @@ public class JdiHomePageTest {
     }
 
     @Test
-    public void jdi8ItemOnTheLeftSectionTest(){
+    public void jdi8ItemOnTheLeftSectionTest() {
         //Assert that there are 5 items in the Left Section are displayed and they have proper text
-        List <WebElement> sidebarMenu = driver.findElements(By.cssSelector("ul[class*='sidebar-menu'] > li"));
+        List<WebElement> sidebarMenu = driver.findElements(By.cssSelector("ul[class*='sidebar-menu'] > li"));
 
         assertThat(sidebarMenu.size()).isEqualTo(5);
 
