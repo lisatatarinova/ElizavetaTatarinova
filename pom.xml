@@ -86,5 +86,11 @@
                 <testng.suite.file>${suite.file.directory}/MultiplyAndDivideTestSuite.xml</testng.suite.file>
             </properties>
         </profile>
+        <profile>
+            <id>Homework2TestSuite</id>
+            <properties>
+                <testng.suite.file>${suite.file.directory}/Homework2TestSuite.xml</testng.suite.file>
+            </properties>
+        </profile>
     </profiles>
 </project>

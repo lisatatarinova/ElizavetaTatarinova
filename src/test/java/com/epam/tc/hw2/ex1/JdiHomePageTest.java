@@ -1,4 +1,4 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw2.ex1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

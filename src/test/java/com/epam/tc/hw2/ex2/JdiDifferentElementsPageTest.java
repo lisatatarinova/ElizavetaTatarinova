@@ -1,4 +1,4 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw2.ex2;
 
 import io.netty.util.Timeout;
 import org.openqa.selenium.By;
