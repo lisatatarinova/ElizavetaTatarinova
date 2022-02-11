@@ -10,8 +10,8 @@ public class CalculatorSubtractionTest {
 
     @Test(dataProviderClass = DataProviderForCalculator.class,
             dataProvider = "getTestDataForSubtractionPositive")
-    public void subtractionPositiveTest(long a, long b, long expected) {
 
+    public void subtractionPositiveTest(long a, long b, long expected) {
         double result = calculator.sub(a, b);
         assertThat(result).isEqualTo(expected);
     }

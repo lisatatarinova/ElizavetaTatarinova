@@ -10,8 +10,8 @@ public class CalculatorMultiplicationTest {
 
     @Test(dataProviderClass = DataProviderForCalculator.class,
             dataProvider = "getTestDataForMultiplicationPositive")
-    public void multiplicationPositiveTest(double a, double b, double expected) {
 
+    public void multiplicationPositiveTest(double a, double b, double expected) {
         double result = calculator.mult(a, b);
         assertThat(result).isEqualTo(expected);
     }

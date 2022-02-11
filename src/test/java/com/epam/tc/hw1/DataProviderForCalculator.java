@@ -5,8 +5,8 @@ import org.testng.annotations.DataProvider;
 public class DataProviderForCalculator {
 
     @DataProvider
-    public static Object[][] getTestDataForAdditionPositive() {
 
+    public static Object[][] getTestDataForAdditionPositive() {
         return new Object[][]{
                 {-35, -6, -41},
                 {0, 4.0, 4.0},
@@ -16,8 +16,8 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-    public static Object[][] getTestDataForAdditionNegative() {
 
+    public static Object[][] getTestDataForAdditionNegative() {
         return new Object[][]{
                 {23137.23, 123.12, 5}
                 //{1.7976931348623158e+308 + 1, 1.7976931348623158e+308 + 1, }
@@ -25,8 +25,8 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-    public static Object[][] getTestDataForDivisionPositive() {
 
+    public static Object[][] getTestDataForDivisionPositive() {
         return new Object[][]{
                 {144, 12, 12},
                 {-15, -5, 3},
@@ -35,16 +35,16 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-    public static Object[][] getTestDataForDivisionByZero() {
 
+    public static Object[][] getTestDataForDivisionByZero() {
         return new Object[][]{
                 {4566, 0}
         };
     }
 
     @DataProvider
-    public static Object[][] getTestDataForMultiplicationPositive() {
 
+    public static Object[][] getTestDataForMultiplicationPositive() {
         return new Object[][]{
                 {567, 0, 0},
                 {0, 0, 0},
@@ -54,8 +54,8 @@ public class DataProviderForCalculator {
 
 
     @DataProvider
-    public static Object[][] getTestDataForSubtractionPositive() {
 
+    public static Object[][] getTestDataForSubtractionPositive() {
         return new Object[][]{
                 {0, 0, 0},
                 {10, 0, 10},
