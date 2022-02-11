@@ -39,8 +39,7 @@ public class JdiDifferentElementsPageTest {
     @Test
     public void jdi2UserNameAfterLoginTest() {
         //Perform login
-        WebElement loginButton = driver.findElement(By.id("user-icon"));
-        loginButton.click();
+        driver.findElement(By.id("user-icon")).click();
 
         FluentWait<WebDriver> webDriverWait = new FluentWait(driver);
         List<WebElement> loginNameField = webDriverWait.until(
@@ -48,10 +47,8 @@ public class JdiDifferentElementsPageTest {
         );
 
         loginNameField.get(0).sendKeys("Roman");
-        WebElement loginPasswordField = driver.findElement(By.cssSelector("input#password"));
-        loginPasswordField.sendKeys("Jdi1234");
-        WebElement pressEnter = driver.findElement(By.id("login-button"));
-        pressEnter.click();
+        driver.findElement(By.cssSelector("input#password")).sendKeys("Jdi1234");
+        driver.findElement(By.id("login-button")).click();
 
         //Assert Username is loggined
         WebElement userNameAfterLogin = webDriverWait.until(
@@ -71,57 +68,40 @@ public class JdiDifferentElementsPageTest {
         List<WebElement> serviceDropDown = webDriverWait.until(
                 ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//a[text()='Different elements']"), 0)
         );
-
         serviceDropDown.get(0).click();
 
         //WebDriverWait webDriverWait1 = new WebDriverWait(driver, Duration.ofSeconds(100));
         webDriverWait.until(ExpectedConditions.urlToBe("https://jdi-testing.github.io/jdi-light/different-elements.html"));
 
         //Select checkboxes
-        WebElement waterCheckbox =
-                driver.findElement(By.xpath("//label[contains(.,\"Water\")]/input"));
-        waterCheckbox.click();
-
-        WebElement windCheckbox =
-                driver.findElement(By.xpath("//label[contains(.,\"Wind\")]/input"));
-        windCheckbox.click();
+        driver.findElement(By.xpath("//label[contains(.,\"Water\")]/input")).click();
+        driver.findElement(By.xpath("//label[contains(.,\"Wind\")]/input")).click();
 
         //Select radio
-        WebElement selenRadioButton =
-                driver.findElement(By.xpath("//label[contains(.,\"Selen\")]/input"));
-        selenRadioButton.click();
+        driver.findElement(By.xpath("//label[contains(.,\"Selen\")]/input")).click();
 
         //Select in dropdown
-        WebElement redRadioButton =
-                driver.findElement(By.xpath("//option[text()='Red']"));
-        redRadioButton.click();
+        driver.findElement(By.xpath("//option[text()='Red']")).click();
 
         List<WebElement> colourDropdown = webDriverWait.until(
                 ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//option[text()='Yellow']"), 0)
         );
-
         colourDropdown.get(0).click();
 
         //Assert that
         //•	for each checkbox there is an individual log row and value is corresponded to the status of checkbox
-        WebElement logWaterCheckbox =
-                driver.findElement(By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'Water')]"));
-        assertThat(logWaterCheckbox.getText()).contains("true");
-        WebElement logWindCheckbox =
-                driver.findElement(By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'Wind')]"));
-        assertThat(logWindCheckbox.getText()).contains("true");
+        assertThat(driver.findElement(By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'Water')]"))
+                .getText()).contains("true");
+        assertThat(driver.findElement(By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'Wind')]"))
+                .getText()).contains("true");
         //Assert that
         //•	for radio button there is a log row and value is corresponded to the status of radio button
-        WebElement logMetalRadioButton =
-                driver.findElement(By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'metal')]"));
-        assertThat(logMetalRadioButton.getText()).contains("Selen");
-
+        assertThat(driver.findElement(By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'metal')]"))
+                .getText()).contains("Selen");
         //Assert that
         //for dropdown there is a log row and value is corresponded to the selected value.
-        WebElement logYellowDropdown =
-                driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/child::li[contains(.,'Colors')]"));
-        assertThat(logYellowDropdown.getText()).contains("Yellow");
-
+        assertThat(driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/child::li[contains(.,'Colors')]"))
+                .getText()).contains("Yellow");
     }
 
     @AfterClass

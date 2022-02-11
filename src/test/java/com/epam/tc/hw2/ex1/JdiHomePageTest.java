@@ -35,8 +35,7 @@ public class JdiHomePageTest {
     @Test
     public void jdi2UserNameAfterLoginTest() {
         //Perform login
-        WebElement loginButton = driver.findElement(By.id("user-icon"));
-        loginButton.click();
+        driver.findElement(By.id("user-icon")).click();
 
         FluentWait<WebDriver> webDriverWait = new FluentWait(driver);
         List<WebElement> loginNameField = webDriverWait.until(
@@ -44,10 +43,8 @@ public class JdiHomePageTest {
         );
 
         loginNameField.get(0).sendKeys("Roman");
-        WebElement loginPasswordField = driver.findElement(By.cssSelector("input#password"));
-        loginPasswordField.sendKeys("Jdi1234");
-        WebElement pressEnter = driver.findElement(By.id("login-button"));
-        pressEnter.click();
+        driver.findElement(By.cssSelector("input#password")).sendKeys("Jdi1234");
+        driver.findElement(By.id("login-button")).click();
 
         //Assert Username is loggined
         WebElement userNameAfterLogin = webDriverWait.until(
@@ -74,8 +71,8 @@ public class JdiHomePageTest {
     @Test
     public void jdi4ImagesInTheIndexPageTest() {
         //Assert that there are 4 images on the Index Page and they are displayed
-        List<WebElement> imgElements = driver.findElements(By.cssSelector("span[class*='icons-benefit']"));
-        assertThat(imgElements.size()).isEqualTo(4);
+        assertThat(driver.findElements(By.cssSelector("span[class*='icons-benefit']"))
+                .size()).isEqualTo(4);
     }
 
     @Test
@@ -102,9 +99,7 @@ public class JdiHomePageTest {
     @Test
     public void jdi6IframeWithFrameButtonExistsTest() {
         //Assert that there is the iframe with “Frame Button” exist
-        List<WebElement> framewithFrameButton = driver.findElements(By.id("frame"));
-
-        assertThat(framewithFrameButton.size()).isGreaterThan(0);
+        assertThat(driver.findElements(By.id("frame")).size()).isGreaterThan(0);
     }
 
     @Test
@@ -112,9 +107,8 @@ public class JdiHomePageTest {
         //Switch to the iframe and check that there is “Frame Button” in the iframe
         driver.switchTo().frame("frame");
 
-        List<WebElement> frameButton = driver.findElements(By.cssSelector("input[value='Frame Button']"));
-
-        assertThat(frameButton.size()).isGreaterThan(0);
+        assertThat(driver.findElements(By.cssSelector("input[value='Frame Button']"))
+                .size()).isGreaterThan(0);
         //Switch to original window back
         driver.switchTo().defaultContent();
     }
@@ -133,6 +127,8 @@ public class JdiHomePageTest {
         softAssertionsForSidebarMenu.assertThat(sidebarMenu.get(2).getText()).isEqualTo("Service");
         softAssertionsForSidebarMenu.assertThat(sidebarMenu.get(3).getText()).isEqualTo("Metals & Colors");
         softAssertionsForSidebarMenu.assertThat(sidebarMenu.get(4).getText()).isEqualTo("Elements packs");
+
+        softAssertionsForSidebarMenu.assertAll();
     }
 
     @AfterClass
