@@ -5,7 +5,6 @@ import org.testng.annotations.DataProvider;
 public class DataProviderForCalculator {
 
     @DataProvider
-
     public static Object[][] getTestDataForAdditionPositive() {
         return new Object[][]{
                 {-35, -6, -41},
@@ -16,7 +15,6 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-
     public static Object[][] getTestDataForAdditionNegative() {
         return new Object[][]{
                 {23137.23, 123.12, 5}
@@ -25,7 +23,6 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-
     public static Object[][] getTestDataForDivisionPositive() {
         return new Object[][]{
                 {144, 12, 12},
@@ -35,7 +32,6 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-
     public static Object[][] getTestDataForDivisionByZero() {
         return new Object[][]{
                 {4566, 0}
@@ -43,7 +39,6 @@ public class DataProviderForCalculator {
     }
 
     @DataProvider
-
     public static Object[][] getTestDataForMultiplicationPositive() {
         return new Object[][]{
                 {567, 0, 0},
@@ -54,7 +49,6 @@ public class DataProviderForCalculator {
 
 
     @DataProvider
-
     public static Object[][] getTestDataForSubtractionPositive() {
         return new Object[][]{
                 {0, 0, 0},
