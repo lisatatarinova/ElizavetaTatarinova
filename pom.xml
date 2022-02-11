@@ -9,8 +9,71 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+
+        <suite.file.directory>${basedir}/src/test/resources/</suite.file.directory>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.epam.tat.module4</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/calculator-1.0.jar</systemPath>
+            <type>jar</type>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.22.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>AddAndSubtractOperationTest</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <testng.suite.file>${suite.file.directory}/AddAndSubtractOperationTestSuite.xml</testng.suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>AllTests</id>
+            <properties>
+                <testng.suite.file>${suite.file.directory}/AllTestsTestSuite.xml</testng.suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>MultiplyAndDivideTest</id>
+            <properties>
+                <testng.suite.file>${suite.file.directory}/MultiplyAndDivideTestSuite.xml</testng.suite.file>
+            </properties>
+        </profile>
+    </profiles>
 </project>
