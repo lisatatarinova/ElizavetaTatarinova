@@ -3,12 +3,12 @@
 <suite name="JdiHomework2TestSuite" verbose="1" >
     <test name="JdiEx1Test" >
         <classes>
-            <class name="com.epam.tc.hw2.ex1.JdiHomePageTest" />
+            <class name="com.epam.tc.hw2.ex1.HomePageTest" />
         </classes>
     </test>
     <test name="JdiEx2Test" >
         <classes>
-            <class name="com.epam.tc.hw2.ex2.JdiDifferentElementsPageTest" />
+            <class name="com.epam.tc.hw2.ex2.DifferentElementsPageTest" />
         </classes>
     </test>
 </suite>
