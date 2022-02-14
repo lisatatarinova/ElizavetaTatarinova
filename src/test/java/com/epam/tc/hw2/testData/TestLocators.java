@@ -19,21 +19,9 @@ public class TestLocators {
     public By DIFFERENT_ELEMENTS_ELEMENT = By.xpath("//a[text()='Different elements']");
     public By COLOUR_DROPDOWN = By.xpath("//option[text()='Yellow']");
     public By SERVICE_DROPDOWN = By.xpath("//header/descendant::a[contains(.,'Service')]");
-    public Map<String, By> CHECK_BOX = new HashMap<>();
-    {
-        this.CHECK_BOX.put("water", By.xpath("//label[contains(.,'Water')]/input"));
-        this.CHECK_BOX.put("wind", By.xpath("//label[contains(.,'Wind')]/input"));
-    }
+    public By CHECK_BOX = By.className("label-checkbox");
     public By RADIO_BUTTON = By.xpath("//label[contains(.,'Selen')]/input");
     public By COLOUR_DROPDOWNITEM_RED = By.xpath("//option[text()='Red']");
-    public Map<String, By> LOGS_CHECKBOXES_RADIOBUTTON = new HashMap<>();
-    {
-        LOGS_CHECKBOXES_RADIOBUTTON.put("water",
-                By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'Water')]"));
-        LOGS_CHECKBOXES_RADIOBUTTON.put("wind",
-                By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'Wind')]"));
-        LOGS_CHECKBOXES_RADIOBUTTON.put("metal",
-                By.xpath("//ul[contains(@class,logs)]/child::li[contains(.,'metal')]"));
-    }
+    public By LOGS_CHECKBOXES_RADIOBUTTON = By.xpath("//ul[@class='panel-body-list logs']/li");
     public By LOGS_DROPDOWN = By.xpath("//ul[@class='panel-body-list logs']/child::li[contains(.,'Colors')]");
 }

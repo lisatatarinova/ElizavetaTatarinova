@@ -9,11 +9,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class DifferentElementsPageTest {
     WebDriver driver;
     TestWaits testWait = new TestWaits();
+    TestData testData = new TestData();
 
     @BeforeClass
     public void setUp() {
@@ -41,27 +45,30 @@ public class DifferentElementsPageTest {
         //5. Open through the header menu Service -> Different Elements Page
         driver.findElement(locator.SERVICE_DROPDOWN).click();
         testWait.waitUntilServiceDropDownAppears().click();
-        //6. WebDriverWait webDriverWait1 = new WebDriverWait(driver, Duration.ofSeconds(100));
         testWait.waitUntilDifferentElementsPageOpens();
-        //7. Select checkboxes
-        driver.findElement(locator.CHECK_BOX.get("water")).click();
-        driver.findElement(locator.CHECK_BOX.get("wind")).click();
-        //8. Select radio
+        //6. Select checkboxes
+       for(int i = 0; i < 2; i++) {
+           driver.findElements(locator.CHECK_BOX)
+                   .stream()
+                   .filter(checkbox -> checkbox.getText().contains("Water") || checkbox.getText().contains("Wind"))
+                   .collect(Collectors.toList()).get(i)
+                   .click();
+       }
+        //7. Select radio
         driver.findElement(locator.RADIO_BUTTON).click();
-        //9. Select in dropdown
+        //8. Select in dropdown
         driver.findElement(locator.COLOUR_DROPDOWNITEM_RED).click();
         testWait.waitUntilColourDropDownAppers().click();
-        //10. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox
-        assertThat(driver.findElement(locator.LOGS_CHECKBOXES_RADIOBUTTON.get("water"))
-                .getText()).contains("true");
-        assertThat(driver.findElement(locator.LOGS_CHECKBOXES_RADIOBUTTON.get("wind"))
-                .getText()).contains("true");
-        //11. Assert that for radio button there is a log row and value is corresponded to the status of radio button
-        assertThat(driver.findElement(locator.LOGS_CHECKBOXES_RADIOBUTTON.get("metal"))
-                .getText()).contains("Selen");
-        //12. Assert that for dropdown there is a log row and value is corresponded to the selected value.
-        assertThat(driver.findElement(locator.LOGS_DROPDOWN)
-                .getText()).contains("Yellow");
+        //9. Assert that for each checkbox/radiobutton/dropdown there is an individual log row and corresponded value
+        for(int i = 0; i < 4; i++) {
+            assertThat(driver.findElements(locator.LOGS_CHECKBOXES_RADIOBUTTON)
+                    .stream()
+                    .filter(item -> item.getText().contains("Water")
+                            || item.getText().contains("Wind")
+                            || item.getText().contains("metal")
+                            || item.getText().contains("Yellow"))
+                    .collect(Collectors.toList()).size()).isEqualTo(4);
+        }
     }
 
     @AfterClass

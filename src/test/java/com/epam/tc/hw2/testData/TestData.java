@@ -20,4 +20,5 @@ public class TestData {
             "some external projects),\n" +
             "wish to get more…");
     public String DIFF_PAGE_URL = "https://jdi-testing.github.io/jdi-light/different-elements.html";
+    public List <String> CHECKBOX_SET = Arrays.asList("Water", "Wind");
 }
