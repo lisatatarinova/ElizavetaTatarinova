@@ -39,8 +39,7 @@ public class HomePageTest {
         //4. Assert Username is loggined
         assertThat(testWait.waitUntilUserIsLoggined().getText()).isEqualTo(expected.USER_LOGIN_NAME);
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        for(int i = 0; i<expected.HEADER_ITEMS.size(); i++)
-        {
+        for(int i = 0; i<expected.HEADER_ITEMS.size(); i++) {
             softAssertions.assertThat(driver.findElements(locator.HEADER_ITEMS).get(i)
                     .getText()).isEqualTo(expected.HEADER_ITEMS.get(i));
         }
@@ -49,8 +48,7 @@ public class HomePageTest {
         assertThat(driver.findElements(locator.IMAGES_ON_INDEX_PAGE).size()).isEqualTo(4);
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         assertThat(driver.findElements(locator.TEXTS_ON_INDEX_PAGE).size()).isEqualTo(4);
-        for(int i = 0; i<expected.ICONS_TEXTS.size(); i++)
-        {
+        for(int i = 0; i<expected.ICONS_TEXTS.size(); i++) {
             softAssertions.assertThat(driver.findElements(locator.TEXTS_ON_INDEX_PAGE)
                     .get(i).getText()).isEqualTo(expected.ICONS_TEXTS.get(i));
         }
