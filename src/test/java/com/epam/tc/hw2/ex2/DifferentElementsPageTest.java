@@ -59,7 +59,7 @@ public class DifferentElementsPageTest {
         driver.findElement(locator.COLOUR_DROPDOWNITEM_RED).click();
         testWait.waitUntilColourDropDownAppers().click();
         //9. Assert that for each checkbox/radiobutton/dropdown there is an individual log row and corresponded value
-        assertThat(driver.findElements(locator.LOGS_CHECKBOXES_RADIOBUTTON)
+        assertThat(driver.findElements(locator.LOGS)
                     .stream()
                     .filter(item -> item.getText().contains("Water")
                             || item.getText().contains("Wind")

@@ -22,6 +22,5 @@ public class TestLocators {
     public By CHECK_BOX = By.className("label-checkbox");
     public By RADIO_BUTTON = By.xpath("//label[contains(.,'Selen')]/input");
     public By COLOUR_DROPDOWNITEM_RED = By.xpath("//option[text()='Red']");
-    public By LOGS_CHECKBOXES_RADIOBUTTON = By.xpath("//ul[@class='panel-body-list logs']/li");
-    public By LOGS_DROPDOWN = By.xpath("//ul[@class='panel-body-list logs']/child::li[contains(.,'Colors')]");
+    public By LOGS = By.xpath("//ul[@class='panel-body-list logs']/li");
 }
