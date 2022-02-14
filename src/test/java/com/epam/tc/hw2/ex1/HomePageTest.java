@@ -30,29 +30,29 @@ public class HomePageTest {
         //1. Open test site by URL
         driver.get(expected.URL);
         //2. Assert Browser title
-        assertThat(driver.getTitle()).isEqualTo(expected.browserTitle);
+        assertThat(driver.getTitle()).isEqualTo(expected.BROWSER_TITLE);
         //3. Perform login
         driver.findElement(locator.USER_ICON).click();
-        testWait.waitUntilLoginMenuAppears().sendKeys(expected.userName);
-        driver.findElement(locator.PASSWORD_INPUT).sendKeys(expected.userPassword);
+        testWait.waitUntilLoginMenuAppears().sendKeys(expected.USER_NAME);
+        driver.findElement(locator.PASSWORD_INPUT).sendKeys(expected.USER_PASSWORD);
         driver.findElement(locator.LOGIN_BUTTON).click();
         //4. Assert Username is loggined
-        assertThat(testWait.waitUntilUserIsLoggined().getText()).isEqualTo(expected.userLoginName);
+        assertThat(testWait.waitUntilUserIsLoggined().getText()).isEqualTo(expected.USER_LOGIN_NAME);
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        for(int i = 0; i<expected.headerItems.size(); i++)
+        for(int i = 0; i<expected.HEADER_ITEMS.size(); i++)
         {
             softAssertions.assertThat(driver.findElements(locator.HEADER_ITEMS).get(i)
-                    .getText()).isEqualTo(expected.headerItems.get(i));
+                    .getText()).isEqualTo(expected.HEADER_ITEMS.get(i));
         }
         softAssertions.assertAll();
         //6. Assert that there are 4 images on the Index Page and they are displayed
         assertThat(driver.findElements(locator.IMAGES_ON_INDEX_PAGE).size()).isEqualTo(4);
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         assertThat(driver.findElements(locator.TEXTS_ON_INDEX_PAGE).size()).isEqualTo(4);
-        for(int i = 0; i<expected.iconsTexts.size(); i++)
+        for(int i = 0; i<expected.ICONS_TEXTS.size(); i++)
         {
             softAssertions.assertThat(driver.findElements(locator.TEXTS_ON_INDEX_PAGE)
-                    .get(i).getText()).isEqualTo(expected.iconsTexts.get(i));
+                    .get(i).getText()).isEqualTo(expected.ICONS_TEXTS.get(i));
         }
         softAssertions.assertAll();
         //8. Assert that there is the iframe with “Frame Button” exist
@@ -64,9 +64,9 @@ public class HomePageTest {
         driver.switchTo().defaultContent();
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         assertThat(driver.findElements(locator.LEFT_SECTION_ITEMS).size()).isEqualTo(5);
-        for(int i = 0; i<expected.menuItems.size(); i++) {
+        for(int i = 0; i<expected.MENU_ITEMS.size(); i++) {
             softAssertions.assertThat(driver.findElements(locator.LEFT_SECTION_ITEMS)
-                    .get(i).getText()).isEqualTo(expected.menuItems.get(i));
+                    .get(i).getText()).isEqualTo(expected.MENU_ITEMS.get(i));
         }
         softAssertions.assertAll();
     }

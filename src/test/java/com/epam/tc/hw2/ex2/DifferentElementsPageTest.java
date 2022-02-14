@@ -20,6 +20,7 @@ public class DifferentElementsPageTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        testWait.setTestWaits(driver);
     }
 
     @Test
@@ -29,14 +30,14 @@ public class DifferentElementsPageTest {
         //1. Open test site by URL
         driver.get(expected.URL);
         //2. Assert Browser title
-        assertThat(driver.getTitle()).isEqualTo(expected.browserTitle);
+        assertThat(driver.getTitle()).isEqualTo(expected.BROWSER_TITLE);
         //3. Perform login
         driver.findElement(locator.USER_ICON).click();
-        testWait.waitUntilLoginMenuAppears().sendKeys(expected.userName);
-        driver.findElement(locator.PASSWORD_INPUT).sendKeys(expected.userPassword);
+        testWait.waitUntilLoginMenuAppears().sendKeys(expected.USER_NAME);
+        driver.findElement(locator.PASSWORD_INPUT).sendKeys(expected.USER_PASSWORD);
         driver.findElement(locator.LOGIN_BUTTON).click();
         //4. Assert Username is loggined
-        assertThat(testWait.waitUntilUserIsLoggined().getText()).isEqualTo(expected.userLoginName);
+        assertThat(testWait.waitUntilUserIsLoggined().getText()).isEqualTo(expected.USER_LOGIN_NAME);
         //5. Open through the header menu Service -> Different Elements Page
         driver.findElement(locator.SERVICE_DROPDOWN).click();
         testWait.waitUntilServiceDropDownAppears().click();
@@ -64,7 +65,7 @@ public class DifferentElementsPageTest {
     }
 
     @AfterClass
-    public void tearDown() throws InterruptedException {
+    public void tearDown(){
         driver.quit();
     }
 }
