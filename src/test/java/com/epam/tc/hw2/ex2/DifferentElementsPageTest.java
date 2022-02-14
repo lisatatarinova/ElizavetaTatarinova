@@ -17,7 +17,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class DifferentElementsPageTest {
     WebDriver driver;
     TestWaits testWait = new TestWaits();
-    TestData testData = new TestData();
 
     @BeforeClass
     public void setUp() {
