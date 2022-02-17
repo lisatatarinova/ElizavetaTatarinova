@@ -59,6 +59,18 @@
             <version>${webdrivermanager.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>4.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>4.1.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -102,6 +114,12 @@
             <id>Homework2TestSuite</id>
             <properties>
                 <testng.suite.file>${suite.file.directory}/Homework2TestSuite.xml</testng.suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>Homework3TestSuite</id>
+            <properties>
+                <testng.suite.file>${suite.file.directory}/Homework3TestSuite.xml</testng.suite.file>
             </properties>
         </profile>
     </profiles>
