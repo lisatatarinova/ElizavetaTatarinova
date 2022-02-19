@@ -1,28 +1,27 @@
 package com.epam.tc.hw3;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ExpectedDataForTests {
-    public Stream<String> headerItems = Stream.of("HOME","CONTACT FORM","SERVICE","METALS & COLORS");
-    public Stream<String> texts = Stream.of("To include good practices\n" +
+    public final static List<String> HEADER_ITEMS = List.of("HOME","CONTACT FORM","SERVICE","METALS & COLORS");
+    public final static List<String> TEXTS = List.of("To include good practices\n" +
             "and ideas from successful\n" +
             "EPAM project", "To be flexible and\n" +
             "customizable", "To be multiplatform", "Already have good base\n" +
             "(about 20 internal and\n" +
             "some external projects),\n" +
             "wish to get more…");
-    public Stream<String> leftMenuItems = Stream.of("Home", "Contact form", "Service", "Metals & Colors"
+    public final static List<String> LEFT_MENU_ITEMS = List.of("Home", "Contact form", "Service", "Metals & Colors"
             , "Elements packs");
-    public Stream<String> itemsToBeSelected = Stream.of("Water", "Wind", "Selen");
-    public List<ItemsLog> itemsLogs = List.of(
+    public final static List<String> ITEMS_TO_BE_SELECTED = List.of("Water", "Wind", "Selen");
+    public final static List<ItemsLog> ITEMS_LOGS = List.of(
             new ItemsLog("Colors", "Yellow"),
             new ItemsLog("metal", "Selen"),
             new ItemsLog("Wind", "true"),
             new ItemsLog("Water", "true")
     );
 
-    public class ItemsLog {
+    public static class ItemsLog {
         public String itemNameLog;
         public String itemStatusLog;
 

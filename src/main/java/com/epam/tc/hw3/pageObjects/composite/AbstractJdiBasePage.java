@@ -1,19 +1,21 @@
-package com.epam.tc.hw3.page.objects.composite.component;
+package com.epam.tc.hw3.pageObjects.composite;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class AbstractBaseComponent {
+public abstract class AbstractJdiBasePage {
 
     protected WebDriver driver;
     protected FluentWait wait;
 
-    protected AbstractBaseComponent(WebDriver driver) {
+    protected AbstractJdiBasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new FluentWait(driver);
         PageFactory.initElements(this.driver, this);
+    }
+
+    protected String getCurrentPageUrl() {
+        return driver.getCurrentUrl();
     }
 }

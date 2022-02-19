@@ -1,5 +1,6 @@
 package com.epam.tc.hw3;
 
+import com.epam.tc.hw3.utils.PropertyLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ import org.testng.annotations.BeforeSuite;
 public abstract class SeleniumBaseTest {
     protected WebDriver driver;
     protected SoftAssertions softAssertions = new SoftAssertions();
-    protected ExpectedDataForTests expectedDataForTests = new ExpectedDataForTests();
+    protected PropertyLoader.User user = new PropertyLoader.User();
 
     @BeforeSuite
     public void beforeSuite() {

@@ -1,7 +1,6 @@
-package com.epam.tc.hw3.page.objects.composite;
+package com.epam.tc.hw3.pageObjects.composite;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

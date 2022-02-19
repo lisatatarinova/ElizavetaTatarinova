@@ -1,4 +1,4 @@
-package com.epam.tc.hw3.page.objects.composite.component;
+package com.epam.tc.hw3.pageObjects.composite.component;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

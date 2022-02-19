@@ -1,9 +1,9 @@
-package com.epam.tc.hw3.page.objects.composite;
+package com.epam.tc.hw3.pageObjects.composite;
 
-import com.epam.tc.hw3.page.objects.composite.component.LoginWindowComponent;
+import com.epam.tc.hw3.pageObjects.composite.component.LoginWindowComponent;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Stream;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -61,20 +61,20 @@ public class JdiIndexPage extends AbstractJdiBasePage {
         return userName.getText();
     }
 
-    public Stream<String> getHeaderItems() {
-        return headerItems.stream().map(WebElement::getText);
+    public List<String> getHeaderItems() {
+        return headerItems.stream().map(WebElement::getText).toList();
     }
 
-    public Stream<WebElement> getImages() {
-        return images.stream();
+    public List<WebElement> getImages() {
+        return images;
     }
 
-    public Stream<String> getTexts() {
-        return texts.stream().map(WebElement::getText);
+    public List<String> getTexts() {
+        return texts.stream().map(WebElement::getText).toList();
     }
 
-    public Stream<WebElement> getIframes() {
-        return iframes.stream();
+    public List<WebElement> getIframes() {
+        return iframes;
     }
 
     public String checkButtonsInFrame() {
@@ -84,8 +84,8 @@ public class JdiIndexPage extends AbstractJdiBasePage {
         return frameButtonValue;
     }
 
-    public Stream<String> getLeftMenuItems() {
-        return leftMenuItems.stream().map(WebElement::getText);
+    public List<String> getLeftMenuItems() {
+        return leftMenuItems.stream().map(WebElement::getText).toList();
     }
 
     public void openPageThroughMenu(String menuItem, String subMenuItem) {
