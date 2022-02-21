@@ -15,7 +15,7 @@ public abstract class AbstractJdiBasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    protected String getCurrentPageUrl() {
+    public String getCurrentPageUrl() {
         return driver.getCurrentUrl();
     }
 }

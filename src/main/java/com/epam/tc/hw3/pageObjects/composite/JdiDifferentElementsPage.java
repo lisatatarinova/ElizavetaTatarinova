@@ -30,28 +30,15 @@ public class JdiDifferentElementsPage extends AbstractJdiBasePage {
         wait.until(ExpectedConditions.urlToBe("https://jdi-testing.github.io/jdi-light/different-elements.html"));
     }
 
-    @Override
-    public String getCurrentPageUrl() {
-        return super.getCurrentPageUrl();
-    }
-
     public void selectItem(String itemName) {
-        items.stream()
-                .filter(item ->
-                        item.getText().contains(itemName))
-                .toList().get(0).click();
+        items.stream().filter(item -> item.getText().contains(itemName)).toList().get(0).click();
     }
 
     public void selectInDropDown(String dropdownItemName) {
         dropdownMenu.click();
-        wait.until(ExpectedConditions
-                .visibilityOf(dropdownItems
-                        .stream()
-                        .filter(item -> item.getText().contains(dropdownItemName))
-                        .toList().get(0)));
-        dropdownItems.stream()
-                .filter(item -> item.getText().contains(dropdownItemName))
-                .toList().get(0).click();
+        wait.until(ExpectedConditions.visibilityOf(
+                dropdownItems.stream().filter(item -> item.getText().contains(dropdownItemName)).toList().get(0)));
+        dropdownItems.stream().filter(item -> item.getText().contains(dropdownItemName)).toList().get(0).click();
     }
 
     public List<String> getItemLogs() {

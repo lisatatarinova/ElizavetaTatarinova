@@ -1,18 +1,26 @@
 package com.epam.tc.hw3.utils;
 
 public class User {
-    PropertyLoader propertyLoader = new PropertyLoader();
+    String username;
+    String password;
+    String name;
+
+    User(String username, String password, String name) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
 
     public String getUsername() {
-        return propertyLoader.username;
+        return username;
     }
 
     public String getPassword() {
-        return propertyLoader.password;
+        return password;
     }
 
     public String getName() {
-        return propertyLoader.name;
+        return name;
     }
 
 }

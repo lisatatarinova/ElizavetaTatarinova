@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeSuite;
 public abstract class SeleniumBaseTest {
     protected WebDriver driver;
     protected SoftAssertions softAssertions = new SoftAssertions();
-    protected User user = new User();
+    protected User user = new PropertyLoader().getUserPreperties();
 
     @BeforeSuite
     public void beforeSuite() {
