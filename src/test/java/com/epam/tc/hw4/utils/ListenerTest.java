@@ -18,7 +18,6 @@ public class ListenerTest implements ITestListener {
         if (driver != null) {
             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             AttachmentUtils.attachPngImage("Screenshot on failure", screenshot);
-            System.out.println("!!!!!!!!!!! LISTENER IS HERE");
         } else {
             Allure.addAttachment("Screenshot on failure", "screenshot");
         }
