@@ -7,11 +7,11 @@
     <test name="JdiEx1Test" >
         <classes>
             <class name="com.epam.tc.hw4.ex1.JdiIndexPageTest" />
+            <class name="com.epam.tc.hw4.ex1.JdiIndexPageFailedTest" />
         </classes>
     </test>
     <test name="JdiEx2Test" >
         <classes>
-            <class name="com.epam.tc.hw4.ex2.JdiDifferentElementsPageFailedTest" />
             <class name="com.epam.tc.hw4.ex2.JdiDifferentElementsPageTest" />
         </classes>
     </test>
