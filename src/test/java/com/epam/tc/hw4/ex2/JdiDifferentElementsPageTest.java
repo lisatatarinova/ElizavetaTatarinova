@@ -2,12 +2,15 @@ package com.epam.tc.hw4.ex2;
 
 import com.epam.tc.hw4.ActionStepsEx2;
 import com.epam.tc.hw4.SeleniumBaseTest;
+import com.epam.tc.hw4.utils.ListenerTest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.epam.tc.hw4.ExpectedDataForTests.*;
 
+@Listeners(ListenerTest.class)
 public class JdiDifferentElementsPageTest extends SeleniumBaseTest {
     @Feature("JDI Site Web Elements")
     @Story("As a User, I want to load Different Elements Page so that I can login and interact with Page Elements")

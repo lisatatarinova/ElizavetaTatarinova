@@ -1,7 +1,6 @@
 package com.epam.tc.hw4.utils;
 
 import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,7 +10,6 @@ import org.testng.ITestResult;
 @Slf4j
 public class ListenerTest implements ITestListener {
 
-    @Step("Hi Listeners")
     @Override
     public void onTestFailure(ITestResult result) {
         Object driver = result.getTestContext().getAttribute("driver");
@@ -21,6 +19,5 @@ public class ListenerTest implements ITestListener {
         } else {
             Allure.addAttachment("Screenshot on failure", "screenshot");
         }
-        result.setEndMillis(System.currentTimeMillis());
     }
 }

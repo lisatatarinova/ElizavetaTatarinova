@@ -2,14 +2,17 @@ package com.epam.tc.hw4.ex1;
 
 import com.epam.tc.hw4.ActionStepsEx1;
 import com.epam.tc.hw4.SeleniumBaseTest;
+import com.epam.tc.hw4.utils.ListenerTest;
 import com.epam.tc.hw4.utils.PropertyLoader;
 import com.epam.tc.hw4.utils.User;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.epam.tc.hw3.ExpectedDataForTests.*;
 
+@Listeners(ListenerTest.class)
 public class JdiIndexPageFailedTest extends SeleniumBaseTest {
     @Feature("JDI Site Web Elements")
     @Story("As a User, I want to load Index Page so that I can login and navigate to the Header menu")
