@@ -72,7 +72,7 @@ public class AssertSteps extends AbstractStep {
 
     //DIFFERENT ELEMENTS PAGE
 
-    @Step("8. Assert that for each checkbox/radio button/dropdown there is a log " +
+    @Step("Assert that for each checkbox/radio button/dropdown there is a log " +
             "row and value is corresponded to the status")
     public void assertPageItemsLogs(int itemsCount, List<ExpectedDataForTests.ItemsLog> itemsLogs) {
         System.out.println(itemsCount);

@@ -31,7 +31,7 @@ public class ActionSteps extends AbstractStep {
 
     //DIFFERENT ELEMENTS PAGE
 
-    @Step("5. Open through the header menu {menu} -> {subMenu}")
+    @Step("Open through the header menu {menu} -> {subMenu}")
     public void openHeaderSubmenu(String menu, String subMenu) {
         indexPage.openHeaderSubMenu(menu, subMenu);
         this.elementsPage = new JdiDifferentElementsPage(driver);
