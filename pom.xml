@@ -24,6 +24,7 @@
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
+        <cucumber.version>7.2.3</cucumber.version>
     </properties>
 
     <dependencies>
@@ -96,6 +97,16 @@
             <version>2.6</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -152,6 +163,12 @@
             <id>Homework4TestSuite</id>
             <properties>
                 <testng.suite.file>${suite.file.directory}/Homework4TestSuite.xml</testng.suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>Homework5TestSuite</id>
+            <properties>
+                <testng.suite.file>${suite.file.directory}/Homework5TestSuite.xml</testng.suite.file>
             </properties>
         </profile>
     </profiles>
