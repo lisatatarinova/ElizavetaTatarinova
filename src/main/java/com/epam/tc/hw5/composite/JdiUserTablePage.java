@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,24 +38,13 @@ public class JdiUserTablePage extends AbstractJdiBasePage {
     }
 
     public int getTableItemsCounter(String itemType) {
-        int count = 0;
-        switch (itemType) {
-            case "Dropdowns":
-                count = dropDownItems.size();
-                break;
-            case "Usernames":
-                count = usernameItems.size();
-                break;
-            case "Description texts under images":
-                count = descriptionItems.size();
-                break;
-            case "Checkboxes":
-                count = checkboxesItems.size();
-                break;
-            default:
-                break;
-        }
-        return count;
+        return switch (itemType) {
+            case "Dropdowns" -> dropDownItems.size();
+            case "Usernames" ->  usernameItems.size();
+            case "Description texts under images" -> descriptionItems.size();
+            case "Checkboxes" -> checkboxesItems.size();
+            default -> 0;
+        };
     }
 
     public List<Map<String, String>> getTableFromUserPage() {
