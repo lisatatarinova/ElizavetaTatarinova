@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -75,7 +76,7 @@ public class JdiUserTablePage extends AbstractJdiBasePage {
         dropDownItems.get(0).click();
         wait.until(ExpectedConditions.visibilityOf(dropDownOptions.get(0)));
         System.out.println(dropDownOptions.get(0).getText());
-        return dropDownOptions.stream().map(WebElement::getText).toList();
+        return dropDownOptions.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void selectCheckBox(String userName) {
@@ -86,7 +87,7 @@ public class JdiUserTablePage extends AbstractJdiBasePage {
     public List<String> getLogs() {
         if (logs.size() != 0) {
             return logs.stream().map(WebElement::getText)
-                    .map(item -> item.substring(9, item.length())).toList();
+                    .map(item -> item.substring(9, item.length())).collect(Collectors.toList());
         } else {
             return null;
         }

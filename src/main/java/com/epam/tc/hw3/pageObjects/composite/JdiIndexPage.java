@@ -2,6 +2,7 @@ package com.epam.tc.hw3.pageObjects.composite;
 
 import com.epam.tc.hw3.pageObjects.composite.component.LoginWindowComponent;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.openqa.selenium.By;
@@ -62,7 +63,7 @@ public class JdiIndexPage extends AbstractJdiBasePage {
     }
 
     public List<String> getHeaderItems() {
-        return headerItems.stream().map(WebElement::getText).toList();
+        return headerItems.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public List<WebElement> getImages() {
@@ -70,7 +71,7 @@ public class JdiIndexPage extends AbstractJdiBasePage {
     }
 
     public List<String> getTexts() {
-        return texts.stream().map(WebElement::getText).toList();
+        return texts.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public List<WebElement> getIframes() {
@@ -85,15 +86,15 @@ public class JdiIndexPage extends AbstractJdiBasePage {
     }
 
     public List<String> getLeftMenuItems() {
-        return leftMenuItems.stream().map(WebElement::getText).toList();
+        return leftMenuItems.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void openPageThroughMenu(String menuItem, String subMenuItem) {
         headerItems.stream()
                 .filter(item -> item.getText().contains(menuItem))
-                .toList()
+                .collect(Collectors.toList())
                 .get(0).click();
         wait.until(ExpectedConditions.visibilityOf(headerSubMenu.get(0)));
-        headerSubMenu.stream().filter(item -> item.getText().contains(subMenuItem)).toList().get(0).click();
+        headerSubMenu.stream().filter(item -> item.getText().contains(subMenuItem)).collect(Collectors.toList()).get(0).click();
     }
 }
