@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "7bcd590b-18f0-485e-81d2-4740621aafd1",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 Create a new Trello board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/boards?name=board27_09_2021",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "board27_09_2021"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-1 Get the created board name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Assert board name\", () => {",
+							"    pm.expect(pm.response.json().name).to.eql(\"board27_09_2021\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{trelloBoardID}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trelloBoardID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 Create a list in Trello board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check the active environment\", () => {",
+							"  pm.expect(pm.environment.name).to.eql(\"Trello-PROD\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/lists?name=lisa27_09_2021&idBoard={{trelloBoardID}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "lisa27_09_2021"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{trelloBoardID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 Create a card on a list in Trello board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"trelloBoardVariable\", jsonData.id);",
+							"",
+							"console.log(jsonData);",
+							"console.log(jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/cards?idList={{trelloListID}}&name=lisacard27_09_2021",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "{{trelloListID}}"
+						},
+						{
+							"key": "name",
+							"value": "lisacard27_09_2021"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4 Create multiple cards in Trello board",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"777\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/cards?idList={{trelloListID}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "{{trelloListID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5 Read existing list from Trello board",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{trelloBoardID}}/lists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trelloBoardID}}",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6 Read existing card from Trello board",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{trelloBoardID}}/cards",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trelloBoardID}}",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7 Read existing board membership from Trello",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{trelloBoardID}}/members",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trelloBoardID}}",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8 Read non existing list from Trello board",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{trelloBoardID}}/lists/closed",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trelloBoardID}}",
+						"lists",
+						"closed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9 Update content of a list on Trello board",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/lists/{{trelloListID}}?{{trelloListID}}&name=grt543t",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{trelloListID}}"
+					],
+					"query": [
+						{
+							"key": "{{trelloListID}}",
+							"value": null
+						},
+						{
+							"key": "name",
+							"value": "grt543t"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 Update content of a card on Trello board",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/cards/{{trelloCardID}}?pos=top",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{trelloCardID}}"
+					],
+					"query": [
+						{
+							"key": "pos",
+							"value": "top"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11 Delete a card from a Trello board",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/cards/{{trelloBoardVariable}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{trelloBoardVariable}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12 Archive all cards on a list on a Trello board",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/lists/{{trelloListID}}/archiveAllCards",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{trelloListID}}",
+						"archiveAllCards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my account information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.trello.com/1/members/me",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List on a Board",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TrelloAuth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://trello.com/1/boards/{{trelloBoardID}}/lists",
+					"protocol": "https",
+					"host": [
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trelloBoardID}}",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
