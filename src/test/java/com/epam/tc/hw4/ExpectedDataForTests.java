@@ -13,7 +13,6 @@ public class ExpectedDataForTests {
             "wish to get more…");
     public final static List<String> LEFT_MENU_ITEMS = List.of("Home", "Contact form", "Service", "Metals & Colors"
             , "Elements packs");
-    public final static List<String> ITEMS_TO_BE_SELECTED = List.of("Water", "Wind", "Selen");
     public final static List<ItemsLog> ITEMS_LOGS = List.of(
             new ItemsLog("Colors", "Yellow"),
             new ItemsLog("metal", "Selen"),
