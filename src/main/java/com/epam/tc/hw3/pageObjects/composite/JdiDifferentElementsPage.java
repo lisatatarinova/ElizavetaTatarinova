@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.pageObjects.composite;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,17 +32,17 @@ public class JdiDifferentElementsPage extends AbstractJdiBasePage {
     }
 
     public void selectItem(String itemName) {
-        items.stream().filter(item -> item.getText().contains(itemName)).toList().get(0).click();
+        items.stream().filter(item -> item.getText().contains(itemName)).collect(Collectors.toList()).get(0).click();
     }
 
     public void selectInDropDown(String dropdownItemName) {
         dropdownMenu.click();
         wait.until(ExpectedConditions.visibilityOf(
-                dropdownItems.stream().filter(item -> item.getText().contains(dropdownItemName)).toList().get(0)));
-        dropdownItems.stream().filter(item -> item.getText().contains(dropdownItemName)).toList().get(0).click();
+                dropdownItems.stream().filter(item -> item.getText().contains(dropdownItemName)).collect(Collectors.toList()).get(0)));
+        dropdownItems.stream().filter(item -> item.getText().contains(dropdownItemName)).collect(Collectors.toList()).get(0).click();
     }
 
     public List<String> getItemLogs() {
-        return logs.stream().map(WebElement::getText).toList();
+        return logs.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 }

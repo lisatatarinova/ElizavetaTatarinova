@@ -3,8 +3,6 @@ package com.epam.tc.hw6.service.webdriver;
 import com.epam.tc.hw6.service.exception.IllegalBrowserNameException;
 import com.epam.tc.hw6.service.exception.WebDriverLaunchTypeException;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.net.MalformedURLException;
-import java.net.URL;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.Capabilities;
@@ -14,6 +12,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @NoArgsConstructor(access = AccessLevel.NONE)
 public final class WebDriverFactory {
