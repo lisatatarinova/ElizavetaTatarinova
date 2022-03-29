@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CardTests {
-    String key = "994b0113b0f455ed984634d551a7beb8";
-    String token = "9e7c6b01008523b53d416ca8007ff3fbcbd00bb45a4799b2ed20ea2db73c2a8a";
+    String key = "";
+    String token = "";
     String baseUri = "https://api.trello.com/1";
     String authorization = "OAuth oauth_consumer_key=\""+key+"\", oauth_token=\""+token+"\"";
 
