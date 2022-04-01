@@ -13,8 +13,8 @@ import java.util.Map;
 public class BoardRequests extends MainRequests {
 
     public BoardDto create(String boardName) {
-        Map<String, String> requestBody = new HashMap<>();
-        requestBody.put("name", boardName);
+        BoardDto requestBody = new BoardDto();
+        requestBody.setName(boardName);
         BoardDto response = super.create(requestBody, BOARD_URI).as(BoardDto.class);
         return response;
     }

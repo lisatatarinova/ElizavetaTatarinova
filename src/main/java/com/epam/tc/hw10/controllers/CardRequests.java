@@ -1,29 +1,21 @@
 package com.epam.tc.hw10.controllers;
 
-import com.epam.tc.hw10.dto.CardDto;
-import io.restassured.response.Response;
-
-import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import static com.epam.tc.hw10.services.TrelloUri.CARD_URI;
 import static com.epam.tc.hw10.services.TrelloUri.LIST_URI;
-import static java.text.MessageFormat.format;
+
+import com.epam.tc.hw10.dto.CardDto;
+import io.restassured.response.Response;
+import java.text.MessageFormat;
+import java.util.List;
 
 public class CardRequests extends MainRequests {
 
     public CardDto create(String cardName, String boardId, String listId) {
-        Map<String, String> requestBody = new HashMap<>();
-        requestBody.put("name", cardName);
-        requestBody.put("idBoard", boardId);
-        requestBody.put("idList", listId);
+        CardDto requestBody = new CardDto();
+        requestBody.setName(cardName);
+        requestBody.setIdBoard(boardId);
+        requestBody.setIdList(listId);
         CardDto response = super.create(requestBody, CARD_URI).as(CardDto.class);
-        return response;
-    }
-
-    public Response updateCardData(String field, String value, String cardId) {
-        Response response = super.updateData(field, value, MessageFormat.format("{0}{1}", CARD_URI, cardId));
         return response;
     }
 

@@ -53,7 +53,7 @@ public class TrelloTest {
         board = boardRequests.create(boardName);
         list = listRequests.create(listName, board.getId());
         String listName2 = RandomStringUtils.randomAlphabetic(10);
-        listRequests.updateListData("name", listName2, list);
+        listRequests.updateListData(listName2, list);
         trelloAssertions.verifyName(list, listName2);
     }
 
