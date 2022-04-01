@@ -5,13 +5,13 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class PropertyLoader {
-    private static Locale locale = new Locale("", "");
-    private static ResourceBundle resourceBundle = ResourceBundle.getBundle("requests", locale);
+    private static final Locale locale = new Locale("", "");
+    private static final ResourceBundle resourceBundle =
+            ResourceBundle.getBundle("requests", locale);
 
-    public TrelloDto getAuthPreperties() {
+    public TrelloDto getAuthProperties() {
         return new TrelloDto(resourceBundle.getString("trello.baseUri"),
                     resourceBundle.getString("trello.token"),
                     resourceBundle.getString("trello.key"));
-        }
-
+    }
 }

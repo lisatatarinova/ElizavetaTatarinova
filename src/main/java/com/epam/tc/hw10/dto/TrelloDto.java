@@ -10,5 +10,4 @@ public class TrelloDto {
         this.token = token;
         this.key = key;
     }
-
 }

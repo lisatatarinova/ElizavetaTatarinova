@@ -2,7 +2,6 @@ package com.epam.tc.hw10.controllers;
 
 import com.epam.tc.hw10.services.Auth;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +11,7 @@ public class MainRequests {
 
     public Response create(Map<String, String> requestBody, String methodPath) {
         Response response = RestAssured
-                .given()
-                .spec(authentication.postRequestSpecification())
+                .given(authentication.requestSpecification())
                 .body(requestBody)
                 .when()
                 .post(methodPath);
@@ -22,9 +20,7 @@ public class MainRequests {
 
     public Response getData(String methodPath) {
         Response response = RestAssured
-                .given()
-                .spec(authentication.getRequestSpecification())
-                .contentType(ContentType.JSON)
+                .given(authentication.requestSpecification())
                 .when()
                 .get(methodPath)
                 .then()
@@ -37,8 +33,7 @@ public class MainRequests {
         Map<String, String> putBody = new HashMap<>();
         putBody.put(field, value);
         Response response = RestAssured
-                .given()
-                .spec(authentication.postRequestSpecification())
+                .given(authentication.requestSpecification())
                 .body(putBody)
                 .when()
                 .put(methodPath)
@@ -50,8 +45,7 @@ public class MainRequests {
 
     public Response delete(String methodPath) {
         Response response = RestAssured
-                .given()
-                .spec(authentication.getRequestSpecification())
+                .given(authentication.requestSpecification())
                 .when()
                 .delete(methodPath);
         return response;

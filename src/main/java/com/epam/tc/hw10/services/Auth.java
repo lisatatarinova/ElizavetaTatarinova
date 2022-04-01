@@ -6,16 +6,9 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
 public class Auth {
-    TrelloDto auth = new PropertyLoader().getAuthPreperties();
+    TrelloDto auth = new PropertyLoader().getAuthProperties();
 
-    public RequestSpecification getRequestSpecification() {
-        return RestAssured.given()
-                .baseUri(auth.baseUri)
-                .queryParam("token", auth.token)
-                .queryParam("key", auth.key);
-    }
-
-    public RequestSpecification postRequestSpecification() {
+    public RequestSpecification requestSpecification() {
         return RestAssured.given().contentType(ContentType.JSON)
                 .baseUri(auth.baseUri)
                 .queryParam("token", auth.token)
